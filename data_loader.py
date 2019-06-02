@@ -4,11 +4,13 @@ import torch
 import torch.utils.data as data
 from vocabulary import Vocabulary
 from PIL import Image
+from PIL import ImageFile
 from pycocotools.coco import COCO
 import numpy as np
 from tqdm import tqdm
 import random
 import json
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def get_loader(transform,
                mode='train',
@@ -20,7 +22,7 @@ def get_loader(transform,
                unk_word="<unk>",
                vocab_from_file=True,
                num_workers=0,
-               cocoapi_loc='/opt'):
+               cocoapi_loc=r'C:\Users\Animesh Garg'):
     """Returns the data loader.
     Args:
       transform: Image transform.
@@ -49,8 +51,8 @@ def get_loader(transform,
         assert batch_size==1, "Please change batch_size to 1 if testing your model."
         assert os.path.exists(vocab_file), "Must first generate vocab.pkl from training data."
         assert vocab_from_file==True, "Change vocab_from_file to True."
-        img_folder = os.path.join(cocoapi_loc, 'cocoapi/images/test2014/')
-        annotations_file = os.path.join(cocoapi_loc, 'cocoapi/annotations/image_info_test2014.json')
+        img_folder = os.path.join(cocoapi_loc, 'cocoapi/images/val2014/')
+        annotations_file = os.path.join(cocoapi_loc, 'cocoapi/annotations/captions_val2014.json')
 
     # COCO caption dataset.
     dataset = CoCoDataset(transform=transform,
