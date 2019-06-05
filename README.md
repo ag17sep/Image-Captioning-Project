@@ -31,13 +31,6 @@ Image captioning requires that you create a complex deep learning model with two
 transforms an input image into a set of features, and an RNN that turns those features into rich, descriptive
 language.
 
-One such example of how this architecture performs is pictured below: 
-<!-- ![Center Image](images/image-description.PNG) -->
-
-<p align="center">
-  <img src="images/image-description.PNG">
-</p>
-
 ## Files
 * `Notebook 1`: Load and pre-process data from the MS COCO dataset and design the CNN-RNN model for automatically generating image captions
 * `Notebook 2`: Training phase of the CNN-RNN model 
